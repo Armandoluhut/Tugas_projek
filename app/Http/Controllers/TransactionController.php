@@ -92,9 +92,10 @@ class TransactionController extends Controller
 
     public function showEdit(Transactions $transactions)
     {
+        $transactionDetail = TransactionDetails::where('id',$transactions->id)->first();
         return view('transaction.edit', [
             'transactions' => $transactions,
-            'transaction_detail' => TransactionDetails::all(),
+            'transactionDetail' => $transactionDetail,
             'produk' => Products::all(),
             'voucher' => Vouchers::all(),
             'voucher_usage' => VoucherUsage::all(),

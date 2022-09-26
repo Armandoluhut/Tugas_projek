@@ -2,7 +2,9 @@
 
 @section('content')
 
-<form action="/transaction/edit/{{ $transaction->id }}" method="POST">
+
+<form action="/transaction/edit/{{ $transactions->id }}" method="POST">
+
     @csrf
    
     <h1 class="h3 mb-2 text-gray-800">Transaction</h1>
@@ -21,13 +23,14 @@
             <select name="produk" id="produk" class="form-control" value>
                 <option value="">--Pilih Produk--</option>
                 @foreach ($produk as $item)
-                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    <option {{ $item->id == $transactionDetail->products_id ? 'Selected' : ''  }} value="{{$item->id}}">{{$item->name}}</option>
                 @endforeach
             </select>
             </div>
             <div class="form-group col-md-3">
             <label>Quantity <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" required name="qty" id="qty" value="" onkeyup="hitung()">
+            <input type="number" class="form-control" required name="qty" id="qty" value="{{$transactionDetail->qty }}" onkeyup="hitung()">
+
             </div>
             <div class="form-group col-md-3">
                 <label>Price</label>
