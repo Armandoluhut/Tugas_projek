@@ -1,12 +1,7 @@
 @extends('home')
-
 @section('content')
-
-
 <form action="/transaction/edit/{{ $transactions->id }}" method="POST">
-
     @csrf
-   
     <h1 class="h3 mb-2 text-gray-800">Transaction</h1>
 
     <div class="card shadow">
