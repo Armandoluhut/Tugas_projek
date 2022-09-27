@@ -90,15 +90,18 @@ class TransactionController extends Controller
         }
     }
 
-    public function showEdit(Transactions $transactions)
+    public function showEdit(Transactions $transactions, Vouchers $voucher)
     {
-        $transactionDetail = TransactionDetails::where('id',$transactions->id)->first();
+        $transactionDetail = TransactionDetails::where('id', $transactions->id)->first();
+        $voucherUsage = VoucherUsage::where('id', $voucher->id)->first();
         return view('transaction.edit', [
             'transactions' => $transactions,
             'transactionDetail' => $transactionDetail,
             'produk' => Products::all(),
             'voucher' => Vouchers::all(),
-            'voucher_usage' => VoucherUsage::all(),
+            'voucherUsage' => $voucherUsage,
+
+            dd($voucherUsage),
         ]);
     }
 

@@ -29,7 +29,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label>Price</label>
-                <input type="text" class="form-control" readonly name="price_satuan" id="price_satuan">
+                <input type="text" class="form-control" readonly name="price_satuan" id="price_satuan" value="{{ $transactionDetail->price_satuan }}">
             </div>
     </div>
     </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Additional Request</label>
-                <textarea name="additional_request" class="form-control" required value="{{ $transactions->additional_request }}"></textarea>
+                <textarea name="additional_request" class="form-control" required >{{ $transactions->additional_request }}</textarea>
             </div>
             <div class="form-group col-md-3">
                 <label>Payment Method <span class="text-danger">*</span></label>
@@ -79,7 +79,7 @@
                 <select name="voucher" id="voucher" class="form-control">
                     <option value="none">None</option>
                     @foreach ($voucher as $item)
-                        <option value="{{$item['id']}}">{{$item['voc']}}</option>
+                    <option {{ $item->id == $voucherUsage->voucher_id ? 'Selected' : ''  }} value="{{$item->id}}">{{$item->code}}</option>
                     @endforeach
                 </select>
             </div>
